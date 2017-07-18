@@ -1,0 +1,70 @@
+html,body{height: 100%;}
+
+*{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+.App {
+	overflow: hidden;
+  height: 100%;
+  display: flex;flex-direction: column;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #00b38a;
+  height: 45px;
+  font-size: 0.2rem;
+  text-align: center;
+  line-height: 45px;
+  color: white;
+}
+.App-content{
+	flex: 1;
+	overflow: auto;
+}
+.App-footer{
+  height: 45px;
+  display: flex;
+}
+.App-footer ul{
+	height: 100%;
+	position: relative;
+	float: left;
+	flex: 1;
+}
+.App-footer ul li{
+	line-height: 20px;
+	font-size:0.17rem ;
+	text-align: center;
+	float: left;
+	color:#c2cfcc;
+}
+.App-footer ul div{
+	width: 60px;
+	height: 20px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.App-footer ul i{
+	line-height: 20px;
+	font-size: 0.18rem;
+	float: left;
+	color: #c2cfcc;
+}
+.ic{font-size: 0.23rem !important;}
+.active{
+	display: inline-block;
+	width: 100%;
+	height: 45px;
+	color:red!important;
+	background: #e7f3f0;
+}
+
+.active li{color: #00b38a !important;}
+.active i{color: #00b38a !important;}

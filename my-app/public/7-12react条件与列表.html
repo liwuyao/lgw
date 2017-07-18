@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.bootcss.com/react/15.5.4/react.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.5.4/react-dom.js"></script>
+
+    <!-- 帮我们进行jsx转码 -->
+    <!--script src="https://unpkg.com/prop-types/prop-types.js"></script-->
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>>
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+
+</body>
+
+<script type="text/babel">
+   
+  /* class Login extends React.Component{
+      render(){
+      	return (
+                <div>点击登陆</div> 
+      		)
+      }
+   }
+   
+   class Logout extends React.Component{
+	    render(){
+	      	return (
+                 <div>欢迎小兰</div> 
+	      		)
+	      }
+   }
+
+    class Logbox extends React.Component{ // 
+    	constructor(){
+          super();
+          this.state={
+          	login:false
+          }
+    	}
+
+	    render(){
+	    	var log=<Login />; //才会只会编译一个组件
+	    	if (this.state.login) {
+                 log=<Logout /> 
+	    	};
+	      	return (
+	      		<div>
+                      {log}
+	      		</div>   
+	      		)
+	      }
+   }*/
+
+   class Joblist extends React.Component{
+         constructor(){
+         	super();
+         	this.state={
+         		joblist:[{
+                        "positionId": 2556858,
+                        "positionName": "Web前端工程师",
+                        "city": "成都",
+                        "createTime": "昨天 09:56",
+                        "salary": "20k-30k",
+                        "companyId": 150134,
+                        "companyLogo": "i/image/M00/5E/D2/CgqKkVfs3OaAaxyFAAO24Szt7Io547.png",
+                        "companyName": "德誉网络",
+                        "companyFullName": "成都德誉电子科技有限公司"
+                    },
+                    {
+                        "positionId": 2735603,
+                        "positionName": "Web前端Leader",
+                        "city": "成都",
+                        "createTime": "今天 08:49",
+                        "salary": "18k-20k",
+                        "companyId": 30148,
+                        "companyLogo": "image1/M00/00/43/CgYXBlTUXNOAB9zQAACiK-dB8kg706.jpg",
+                        "companyName": "海南航空",
+                        "companyFullName": "海南航空股份有限公司"
+                    },
+                    {
+                        "positionId": 2889754,
+                        "positionName": "PHP架构师/PHP高级工程师",
+                        "city": "成都",
+                        "createTime": "昨天 09:53",
+                        "salary": "20k-30k",
+                        "companyId": 33179,
+                        "companyLogo": "i/image/M00/30/1C/CgpFT1k5HyuAc11WAAEB4bMyYyg889.jpg",
+                        "companyName": "掌麦科技",
+                        "companyFullName": "四川掌麦科技有限公司"
+                    }]
+         	}
+         }
+         render(){
+            var list = this.state.joblist.map(function(elem) {
+            	return <Jobitem job={elem} key={elem.positionId}/>;
+            })
+
+         	return (
+                    <ul>
+                       {list}
+                    </ul>
+         		)
+         }
+   }
+
+   class Jobitem extends React.Component{
+   	  render(){
+   	  	 let {job} = this.props
+   	  	 return (
+		         <li className="activeable list-item">
+		            <img src="{job.companyLogo}" className="item-logo" />
+		            <div className="item-desc">
+		                <h2 className="item-title">{job.positionName}</h2>
+		                <p className="item-info">
+		                    <span className="item-pos">
+		                        {job.companyFullName}
+		                    </span>
+		                    <span className="item-salary">{job.salary}</span>
+		                </p>
+		            </div>
+		        </li>
+		        
+		        
+
+   	  	 	)
+   	  }
+   }
+
+   ReactDOM.render( 
+    <div>
+   <Joblist />
+    </div>
+    ,
+    document.getElementById('app')
+  );
+</script>
+
+</html>
