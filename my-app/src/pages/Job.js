@@ -53,7 +53,8 @@ class Job extends Component {
 					 	"companyName": "天拓游戏",
 					 	"companyFullName": "广东星辉天拓互动娱乐有限公司"
 					 }
-			]
+			],
+			joblistmore:[]
 		}
 	}
 	render(){
@@ -88,14 +89,30 @@ class Job extends Component {
 		);
 	}
 	btnChange(){
+		 var joblistmore=[{       			
+					 	 "positionId": 3273954, 
+					 	 "positionName": "高级风险数据挖掘工程师", 
+					 	 "city": "上海", 
+					 	 "createTime": "今天 09:06",
+					 	 "salary": "15k-30k", 
+					 	 "companyId": 160479, 
+					 	 "companyLogo": "i/image/M00/17/5D/CgpFT1j-7LaAVbSxADiiWd_ZdNc666.png", 
+					 	 "companyName": "上海宏鹿信息技术服务有限公司", 
+					 	 "companyFullName": "上海宏鹿信息技术服务有限公司"
+					 }]
+		var oldjoblist = this.state.joblist
+		var newjoblist = oldjoblist.concat(joblistmore)
+		console.log(newjoblist);
 		this.setState({
-        		btnclass:"list-more2"
+        		btnclass:"list-more2",
+        		joblist:newjoblist
         	})
 		 setTimeout(()=>{
            this.setState({
           	   btnclass:"list-more"
           })
    	   	 },100)
+		
 	}
 }
 class Jobitem extends React.Component{

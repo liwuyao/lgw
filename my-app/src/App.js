@@ -8,9 +8,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-//  	{this.props.children}
-      <div className="App">
-      	
+      <div className="App">     	
         <div className="App-header">拉勾网</div>
       	<div className="App-content">
       	{this.props.children}

@@ -12,6 +12,16 @@
     width: 88px;
     border-right: 1px solid #e8e8e8;
 }
+.lbutton2 {
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    font-size: 0.15rem;
+    text-align: center;
+    width: 88px;
+    border-right: 1px solid #e8e8e8;
+    background: #CCC;
+}
 .rinput {
     height: 45px;
     margin-left: 89px;
@@ -53,4 +63,31 @@
     height: 7px;
     background: url(./images/icon.png) no-repeat -1px -2.5px;
     background-size: 250px 250px;
+}
+.citynames{
+	float: left;
+	height: 60px;
+	width: 33.3%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 0.15rem;
+    color: #333;
+    min-width: 100px;
+}
+.citynames2{
+	float: left;
+	height: 60px;
+	width: 33.3%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 0.15rem;
+    color: #333;
+    min-width: 100px;
+    background: #CCC;
+}
+.ciy{
+	display: none;
+}
+.ciy2{
+	display: block;
 }
