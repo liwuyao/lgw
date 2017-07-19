@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import {hashHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import './Search.css';
-import Cityitem  from './city/Cityitem';
-import Abname  from './city/Abname';
-import Ghname  from './city/Ghname';
-
+import Citylist  from './city/Citylist';
+import Searchresult  from './city/Searchresult';
 class Search extends Component {
 	constructor(){
 		super();
 		this.btnsearch =  this.btnsearch.bind(this);
 		this.btnchange =  this.btnchange.bind(this);
+		this.btnsearchEnd =  this.btnsearchEnd.bind(this);
+		this.seacrchbtn =  this.seacrchbtn.bind(this);
 		this.state={
 			ciy:"ciy",
 			searchclass:"lbutton",
 			btncityclass:"citynames",
+			linputerclass:"linputer",
+			searchbtnclass:"out",
 			titlehtml:"全国",
 			cities:[{
 							 	"cityList": ["北京", "上海", "广州", "深圳", "成都", "杭州"],
@@ -49,71 +51,61 @@ class Search extends Component {
 	}
 	render(){
 		var state=this.state.btncityclass;
+		var list=this.state.cities;
 		var btnchange=this.btnchange;
-		var hotcity = this.state.cities.map(function(elem,index) {				
-			return elem.cityList.map(function(e1,ix){
-					if(elem.nameStr=="热门城市"){
-						return <Cityitem cits={e1} state1={state} btnchangeto={btnchange}/>;
-					}
-				})				
-           })
-		var ABCDEF = this.state.cities.map(function(elem,index) {				
-			return elem.cityList.map(function(e,ix){
-					if(elem.nameStr=="ABCDEF"){
-						return <Abname cits2={e} />;
-					}
-				})				
-           })
-		var GHIJ = this.state.cities.map(function(elem,index) {				
-			return elem.cityList.map(function(e,ix){
-					if(elem.nameStr=="GHIJ"){
-						return <Ghname cits3={e} />;
-					}
-				})				
+		var List = this.state.cities.map(function(elem,index) {				
+						return <Citylist sendnameStr={elem.nameStr} sendlist={list} state1={state} btnchangeto={btnchange} key={index}/>
            })
 		return(
 			<div>
-				<div className="linputer">
-					<div className={this.state.searchclass} onTouchStart={this.btnsearch}>
+				<div className={this.state.linputerclass}>
+					<div className={this.state.searchclass} onTouchStart={this.btnsearch} onTouchEnd={this.btnsearchEnd}>
 						<span className="city">{this.state.titlehtml}</span>
 						<span className="cityicon"></span>
 					</div>
 					<div className="rinput">
 						<input className="inputer" type="text" placeholder="搜索职位或公司"/>
-						<span className="search"><em className="searchicon"></em></span>
+						<span className="search" onTouchEnd={this.seacrchbtn}><em className="searchicon"></em></span>
 					</div>
 				</div>
+				{/*职位列表和加载更多*/}
+				<div className={this.state.searchbtnclass} >
+					<Searchresult />
+				</div>
+				{/*城市名字块*/}
 				<div className={this.state.ciy}>
-					<p>热门城市</p>
-						<ul className="hotciy">
-								{hotcity}
-						</ul>
-					<p>ABCDEF</p>
-					<ul>
-						{ABCDEF}
-					</ul>
-					<p>GHIJ</p>
-					<ul>
-						{GHIJ}
-					</ul>
+					{List}
 				</div>
 			</div>
+
 		);
 	}
+//	搜索按钮函数
+	seacrchbtn(){
+		this.setState({
+			searchbtnclass:"fadin"
+		})
+	}
+//	城市按钮点击开始
 	btnsearch(){
 		this.setState({
         		searchclass:"lbutton2",
+        		searchbtnclass:"out",
         		ciy:"ciy2"
-        	})
-		setTimeout(()=>{
-           this.setState({
-          	   searchclass:"lbutton"
-          })
-   	   	 },100)
+        })
 	}
-	btnchange(val){
+	btnsearchEnd(){
 		this.setState({
-        		titlehtml:val
+			searchclass:"lbutton",	
+			linputerclass:"out"
+		})
+	}
+//	子组件传输
+	btnchange(val,out){
+		this.setState({
+        		titlehtml:val,
+        		linputerclass:"linputer",
+        		ciy:"ciy"
         	})
 	}
 	

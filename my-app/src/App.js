@@ -31,7 +31,7 @@ class App extends Component {
         			</Link>
         		</ul>
         		<ul>
-        			<Link to="/main" activeClassName="active">
+        			<Link to="/user" activeClassName="active">
         			<div>
         			<i className="iconfont icon-wode"></i>
         			<li>我的</li>

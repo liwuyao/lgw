@@ -88,3 +88,26 @@ body,html{
     padding: 5%;
     
 }
+.name{position: relative;}
+.keys{position: relative;}
+/*错误提示*/
+.alertname{
+	color: red;
+	position: absolute;
+	top: 40%;
+	right: 5%;
+	font-style:normal ;
+	font-size: 12px;
+}
+.alertkey{
+	color: red;
+	position: absolute;
+	top: 36%;
+	right: 12%;
+	font-style:normal ;
+	font-size: 12px;
+}
+/*隐藏*/
+.out{
+	display: none;
+}

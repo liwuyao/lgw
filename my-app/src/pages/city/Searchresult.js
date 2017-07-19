@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {hashHistory} from 'react-router';
 import PropTypes from 'prop-types';
-import './Job.css';
-import Jobitem  from './Job/Joblist';
-import Jobmore  from './Job/Jobmore';
-class Job extends Component {
+import Jobitem  from '../Job/Joblist';
+import Jobmore  from '../Job/Jobmore';
+import '../Job.css';
+class Searchresult extends Component{
 	constructor(){
 		super();
 		this.btnChangemore = this.btnChangemore.bind(this);
 		this.state={
-			username:"去登录",
+			btnclass:"list-more",
 			joblist:[{
                         "positionId": 2556858,
                         "positionName": "Web前端工程师",
@@ -54,48 +54,19 @@ class Job extends Component {
 					 	"companyName": "天拓游戏",
 					 	"companyFullName": "广东星辉天拓互动娱乐有限公司"
 					 }
-			],
-			joblistmore:[]
+			]
 		}
 	}
-	componentWillMount(){
-		var loadusername=localStorage.lastname;
-		if(loadusername){
-			this.setState({
-				username:loadusername
-			})
-		}		
-	}
 	render(){
-		 var list = this.state.joblist.map(function(elem,index) {
+		var list = this.state.joblist.map(function(elem,index) {
             	return <Jobitem job={elem} key={index}/>;
             })
 		return(
-
 			<div>
-				<div className="custom-info none">
-					<span className="info">
-						10秒钟定制职位
-					</span>
-					<a className="go" href="http://localhost:3000/#/login?_k=q05ubd">
-						<em className="icon"></em>
-						<em className="text">{this.state.username}</em>
-					</a>
-				</div>
-				<ul>
-					{list}
-					<Jobmore list={this.state.joblist} listmore={this.btnChangemore}/>
-				</ul>
-				<div id="copyright">
-					<p>©2015 lagou.com, all right reserved </p>
-					<div className="copyright-item">
-						<span className="phone">移动版&nbsp;·&nbsp;</span>
-						<span className="computer">电脑版&nbsp;·&nbsp;</span>
-						<a href="#header">回顶部</a>
-					</div>
-				</div>
+			{list}
+			<Jobmore list={this.state.joblist} listmore={this.btnChangemore}/>
 			</div>
-		);
+		)
 	}
 	btnChangemore(val){
 		this.setState({
@@ -103,4 +74,4 @@ class Job extends Component {
         	})
 	}
 }
-export default Job;
+export default Searchresult;

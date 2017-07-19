@@ -3,7 +3,14 @@
     border-bottom: 1px solid #e8e8e8;
     height: 45px;
 }
+/*隐藏*/
+.out{display: none;}
+/*                选择按钮*/
+.fadin{
+	display: block;
+}
 .lbutton {
+	display: block;
     float: left;
     height: 45px;
     line-height: 45px;

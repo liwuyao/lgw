@@ -6,7 +6,8 @@ import App from './App';
 import Login from './pages/Login';
 import registerServiceWorker from './registerServiceWorker';
 import Search from './pages/Search';
-import Main from './pages/Main';
+import User from './pages/User';
+import Register from './pages/Register';
 import Job from './pages/Job';
 ReactDOM.render((
     <Router history={hashHistory}>
@@ -14,9 +15,10 @@ ReactDOM.render((
      	<IndexRoute component={Job} />
      	<Route path="/job" component={Job}></Route>
      	<Route path="/search" component={Search}></Route>
-     	<Route path="/main" component={Main}></Route>
+     	<Route path="/user" component={User}></Route>
      </Route>
-    <Route path="/login" component={Login}/>
+    <Route path="/login" component={Login}></Route>
+    <Route path="/register" component={Register}></Route>
  	</Router>
  	)
 	, document.getElementById('root'));
