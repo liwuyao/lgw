@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './Search.css';
 import Citylist  from './city/Citylist';
 import Searchresult  from './city/Searchresult';
+import $ from 'jquery';
 class Search extends Component {
 	constructor(){
 		super();
@@ -11,13 +12,19 @@ class Search extends Component {
 		this.btnchange =  this.btnchange.bind(this);
 		this.btnsearchEnd =  this.btnsearchEnd.bind(this);
 		this.seacrchbtn =  this.seacrchbtn.bind(this);
+		this.searchchange =  this.searchchange.bind(this);
+		this.Startsearch =  this.Startsearch.bind(this);
 		this.state={
 			ciy:"ciy",
+			joblist:"",
 			searchclass:"lbutton",
 			btncityclass:"citynames",
 			linputerclass:"linputer",
 			searchbtnclass:"out",
+			historyclass:"out",
 			titlehtml:"全国",
+			searchname:"",
+			startsearch:[""],
 			cities:[{
 							 	"cityList": ["北京", "上海", "广州", "深圳", "成都", "杭州"],
 							 	"name": "热门城市",
@@ -53,9 +60,12 @@ class Search extends Component {
 		var state=this.state.btncityclass;
 		var list=this.state.cities;
 		var btnchange=this.btnchange;
-		var List = this.state.cities.map(function(elem,index) {				
+		var List = this.state.cities.map(function(elem,index) {
 						return <Citylist sendnameStr={elem.nameStr} sendlist={list} state1={state} btnchangeto={btnchange} key={index}/>
            })
+		var historyDom=this.state.startsearch.map(function(elem){
+						return <Historydom sethistory={elem} />
+		})
 		return(
 			<div>
 				<div className={this.state.linputerclass}>
@@ -64,13 +74,15 @@ class Search extends Component {
 						<span className="cityicon"></span>
 					</div>
 					<div className="rinput">
-						<input className="inputer" type="text" placeholder="搜索职位或公司"/>
+						<input className="inputer" type="text" placeholder="搜索职位或公司" onChange={this.searchchange} onFocus={this.Startsearch}/>
 						<span className="search" onTouchEnd={this.seacrchbtn}><em className="searchicon"></em></span>
+									
 					</div>
 				</div>
+				<div className={this.state.historyclass}>{historyDom}</div>
 				{/*职位列表和加载更多*/}
 				<div className={this.state.searchbtnclass} >
-					<Searchresult />
+					<Searchresult senddata={this.joblist}/>
 				</div>
 				{/*城市名字块*/}
 				<div className={this.state.ciy}>
@@ -80,11 +92,39 @@ class Search extends Component {
 
 		);
 	}
+//即将搜索
+	Startsearch(){
+		var historysearch=localStorage.historys;
+		var b = JSON.parse(historysearch)
+		this.setState({
+			startsearch:b,
+			historyclass:"historybox",
+			searchbtnclass:"out"
+		})
+	}
+//搜索东西函数
+	searchchange(e){
+		var intro =e.target.value;
+		var aryy=[]
+		this.setState({
+			searchname:intro
+		})
+	}
 //	搜索按钮函数
 	seacrchbtn(){
+		var This = this;
+		var cityName=this.state.titlehtml;
+		var historysearch=localStorage.historys;
+		var b = JSON.parse(historysearch)
+		var intro = this.state.searchname;
+		b.push(intro);
+		var a = JSON.stringify(b)
+		$.get("/search", {cityNames:cityName,intros:intro},function(){});
 		this.setState({
-			searchbtnclass:"fadin"
+			searchbtnclass:"fadin",
+			historyclass:"out"
 		})
+		localStorage.historys=a;
 	}
 //	城市按钮点击开始
 	btnsearch(){
@@ -110,8 +150,14 @@ class Search extends Component {
 	}
 	
 }
-
-
-
-
+class Historydom extends Component{
+	render(){
+		return(
+			<ul className="historyouter">
+				<li className="history">{this.props.sethistory}</li>
+				<li className="deletebtn"></li>
+			</ul>
+		)
+	}
+}
 export default Search;

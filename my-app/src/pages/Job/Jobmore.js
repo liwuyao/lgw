@@ -2,32 +2,49 @@ import React, { Component } from 'react';
 import {hashHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import '../Job.css';
+import $ from 'jquery';
 class Jobmore extends React.Component{
 	constructor(){
 		super();
 		this.state={
-			btnclass:"list-more"
+			btnclass:"list-more",
+			addlist:"",
+			time:1
 		}
 		this.btnChange =  this.btnChange.bind(this);
+	}
+	componentWillMount(){
+		var This = this;
+		var list ="";
+		$.get("/more", function(data){
+			 list = data.sendlist
+			 This.setState({
+			 	addlist:list
+			 })
+		});
 	}
 	render(){
 		let {cits3} = this.props;
 		return(
-			<li className={this.state.btnclass} onTouchStart={this.btnChange}>加载更多</li>
+			<li className={this.state.btnclass} onClick={this.btnChange}>加载更多</li>
 		)
 	}
-		btnChange(){		
-			var joblistmore=[{       			
-					 	 "positionId": 3273954, 
-					 	 "positionName": "高级风险数据挖掘工程师", 
-					 	 "city": "上海", 
-					 	 "createTime": "今天 09:06",
-					 	 "salary": "15k-30k", 
-					 	 "companyId": 160479, 
-					 	 "companyLogo": "i/image/M00/17/5D/CgpFT1j-7LaAVbSxADiiWd_ZdNc666.png", 
-					 	 "companyName": "上海宏鹿信息技术服务有限公司", 
-					 	 "companyFullName": "上海宏鹿信息技术服务有限公司"
-					 }]
+  //	发送请求加载更多
+		btnChange(){
+			var btn = this.state.time;			
+			var This = this;
+			var list ="";
+			$.get("/more",{numbers:2,time:btn}, function(data){
+				 list = data.sendlist
+				 This.setState({
+				 	addlist:list
+				 })
+			});
+			btn++;
+			this.setState({
+				time:btn
+			})
+			var joblistmore=this.state.addlist
 			var oldjoblist = this.props.list;
 			var newjoblist = oldjoblist.concat(joblistmore);
 			this.props.listmore(newjoblist);

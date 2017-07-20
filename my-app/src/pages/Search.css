@@ -98,3 +98,8 @@
 .ciy2{
 	display: block;
 }
+/*历史记录*/
+.historybox{position: absolute;width: 100%;top:90px;}
+.historyouter{height: 45px;width: 100%;border: 1px solid #e8e8e8;line-height: 45px;}
+.history{height: 45px;width: 85%;background:yellow;line-height: 45px;float: left;}
+.deletebtn{height: 45px;width: 15%;background:red;line-height: 45px;float: left;}
