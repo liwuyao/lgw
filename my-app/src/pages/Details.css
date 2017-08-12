@@ -1,0 +1,346 @@
+*{
+	margin:0;
+	padding:0;
+}
+img, input {
+    border: none;
+    outline: none;
+    padding: 0;
+}
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.head {
+    height: 0.45rem;
+    line-height: 0.45rem;
+    background-color: #00b38a;
+    color: #fff;
+    font-size: 0.18rem;
+    text-align: center;
+    position: relative;
+    width:100%;
+}
+.head .right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width:0.4rem;
+}
+.head .left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0.4rem;
+}
+.head .left .corner {
+    width: 9px;
+    height: 20px;
+    margin: 13px auto 0 auto;
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon2.png) no-repeat -1.5px -20.5px;
+    background-size: 250px 250px;
+    display: inline-block;
+}
+.head .right .corner {
+    width: 17px;
+    height: 20px;
+    margin: 13px auto 0 auto;
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon2.png) no-repeat -60px -46.5px;
+    background-size: 250px 250px;
+    display: inline-block;
+}
+.content {
+    padding-bottom: 44px;
+    width: 98%;
+    position:relative;
+}
+.content .postitle {
+    height: 0.48rem;
+    line-height: 0.48rem;
+    padding: 0 0.15rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+.content .postitle .title {
+    color: #333;
+    font-size: 0.18rem;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+.content .postitle .collicon {
+    float: right;
+    width: 0.39rem;
+    position: relative;
+    text-align: center;
+    padding: 6px 10px 0 10px;
+    height: 0.43rem;
+}
+.content .postitle .notcoll {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -170px -41px;
+    background-size: 2.5rem 2.5rem;
+}
+.content .postitle .icon {
+    display: block;
+    width: 0.15rem;
+    height:0.15rem;
+    margin: 0 auto;
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -150px -41px;
+    background-size: 2.5rem 2.5rem;
+}
+.content .postitle .text {
+    display: block;
+    color: #888;
+    font-size: 0.11rem;
+    line-height: 0.3rem;
+}
+.content .detail {
+    border-bottom: 1px solid #e8e8e8;
+    min-height: 0.1rem;
+    padding: 0.15rem;
+}
+.content .items{
+	display: block;
+	overflow: hidden;
+}
+.content .detail .item {
+    float: left;
+    color: #333;
+    font-size: 0.14rem;
+    position: relative;
+    width: 33.33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.11rem;
+}
+.content .detail .icon {
+    display: inline-block;
+    height: 0.13rem;
+    width: 0.13rem;
+    vertical-align: middle;
+    
+    
+}
+.content .detail .salary .icon {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -66px -48px;
+	background-size: 2.5rem 2.5rem;
+}
+.content .detail .workaddress .icon {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -79px -49px;
+	background-size: 2.5rem 2.5rem;
+}
+.content .detail .jobnature .icon {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -93px -49px;
+    background-size: 2.5rem 2.5rem;
+}
+.content .detail .workyear .icon {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -110.5px -49.5px;
+    background-size: 2.5rem 2.5rem;
+}
+.content .detail .education .icon {
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -127.5px -49px;
+    background-size: 2.5rem 2.5rem;
+}
+.content .detail .temptation {
+    color: #888;
+    word-break: break-all;
+    font-size: 0.13rem;
+}
+.content .company {
+    border-bottom: 1px solid #e8e8e8;
+    min-height: 0.1rem;
+    padding: 0.15rem;
+    overflow: hidden;
+}
+.content .company .logo {
+    width: 0.6rem;
+    height:0.6rem;
+    float: left;
+}
+.content .company .desc {
+    margin-left: 0.7rem;
+    min-height: 0.1rem;
+}
+.content .company .dleft {
+    float: left;
+    min-height: 0.1rem;
+    min-width: 0.1rem;
+    max-width: 80%;
+}
+.content .company .dleft .info {
+    color: #888;
+    font-size:0.14rem;
+}
+.content .company .dleft .title {
+    color: #00b38a;
+    font-size: 0.18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 0.05rem;
+}
+.content .company .dright {
+    float: right;
+    display: inline-block;
+    width: 0.23rem;
+    height: 0.29rem;
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon.png) no-repeat -222.5px -3.5px;
+    background-size: 2.5rem 2.5rem;
+    margin-top: 0.1rem;
+}
+.content .positiondesc {
+    min-height: 0.1rem;
+}
+.content .positiondesc .header {
+    height: 0.36rem;
+    line-height: 0.36rem;
+    color: #00b38a;
+    font-size: 0.14rem;
+    background-color: #d2f9f0;
+    text-align: left;
+    text-indent: 0.15rem;
+}
+.content .positiondesc .content_word {
+    word-break: break-all;
+    padding: 0.15rem;
+    color: #555;
+    font-size: 0.13rem;
+    line-height: 0.22rem;
+}
+.content .positiondesc .content_word .sign{
+	margin-top:0.2rem;
+}
+.content .positioneval .eval-title {
+    background-color: #00b38a;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    padding-left: 0.15rem;
+    color: #00b38a;
+    font-size: 0.14rem;
+    background-color: #d2f9f0;
+}
+.content .positioneval .list-item {
+    padding:0.15rem;
+    padding-bottom: 0.14rem;
+    border-bottom: none;
+}
+.content .positioneval .list-item .info-wrap {
+    position: relative;
+    height: 0.32rem;
+}
+.content .positioneval .list-item .info-wrap img {
+    position: absolute;
+    width: 0.32rem;
+    height: 0.32rem;
+    vertical-align: text-top;
+    border-radius: 50%;
+}
+.content .positioneval .list-item .info-wrap .name {
+    position: absolute;
+    margin-left: 0.4rem;
+    font-size:0.14rem;
+    color: #333;
+    top: -0.03rem;
+}
+.content .positioneval .list-item .info-wrap .time {
+    font-size: 0.12rem;
+    position: absolute;
+    right: 0;
+    top: -0.04px;
+    color: #b2b2b2;
+}
+.content .positioneval .list-item .info-wrap .score-wrap {
+    font-size: 0;
+    position: absolute;
+    width: 85%;
+    bottom: -0.03rem;
+    left: 40px; 
+}
+.content .positioneval .list-item .info-wrap .score-wrap li {
+    font-size: 0.12rem;
+    display: inline-block;
+}
+.content .positioneval .list-item .info-wrap .score-wrap .type {
+    color: #888;
+}
+.content .positioneval .list-item .info-wrap .score-wrap .score {
+    color: #ffba0d;
+}
+.content .positioneval .list-item .tags-wrap {
+    font-size: 0;
+    margin-top: 0.14rem;
+    margin-bottom: 0.04rem;
+}
+.content .positioneval .list-item .info-wrap .score-wrap li+li {
+    margin-left: 3.125%;
+}
+.content .positioneval .list-item .tags-wrap li {
+    font-size: 0.12rem;
+    display: inline-block;
+    color: #b2b2b2;
+    border: 1px solid #ccc;
+    border-radius: 0.2rem;
+    padding: 0.02rem 0.06rem;
+    margin-bottom: 0.1rem;
+    margin-right: 1.63%;
+}
+.content .positioneval .list-item .review-content {
+    color: #333;
+    font-size: 0.13rem;
+    line-height:0.2rem;
+    word-break: break-all;
+}
+.dn {
+    display: none;
+}
+.content .positioneval .list-item .zan-wrap {
+    font-size: 0;
+    text-align: right;
+    margin-top: 0.17rem;
+}
+.content .positioneval .list-item .zan-wrap span {
+    font-size: 0.13rem;
+    color: #00b38a;
+}
+.content .positioneval .list-item .zan-wrap i {
+    display: inline-block;
+    background: url(https://www.lgstatic.com/images/mobile/asset/common/img/icon2.png) no-repeat -43.5px -218px;
+    background-size: 2.5rem 2.50rem;
+    width: 0.155rem;
+    height: 0.15rem;
+    margin-bottom: -0.02rem;
+}
+.content .positioneval .list-item .zan-wrap span .count {
+    margin-left: 0.025rem;
+}
+.content .positioneval .list-item+.list-item {
+    border-top: 1px solid #e8e8e8;
+}
+#content .positioneval .eval-all {
+    display: block;
+    color: #00b38a;
+    font-size: 0.15rem;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    text-align: center;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    margin-top: 0.12rem;
+}
+.content .deliver {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.44rem;
+    line-height: 0.44rem;
+    background-color: #00b38a;
+    color: #fff;
+    font-size: 0.16rem;
+    text-align: center;
+}

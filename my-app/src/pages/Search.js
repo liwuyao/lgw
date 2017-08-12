@@ -14,6 +14,8 @@ class Search extends Component {
 		this.seacrchbtn =  this.seacrchbtn.bind(this);
 		this.searchchange =  this.searchchange.bind(this);
 		this.Startsearch =  this.Startsearch.bind(this);
+		this.deletedata =  this.deletedata.bind(this);
+		this.add =  this.add.bind(this);
 		this.state={
 			ciy:"ciy",
 			joblist:"",
@@ -23,7 +25,9 @@ class Search extends Component {
 			searchbtnclass:"out",
 			historyclass:"out",
 			titlehtml:"全国",
+			searchval:"",
 			searchname:"",
+			result:"请输入信息",
 			startsearch:[""],
 			cities:[{
 							 	"cityList": ["北京", "上海", "广州", "深圳", "成都", "杭州"],
@@ -60,11 +64,13 @@ class Search extends Component {
 		var state=this.state.btncityclass;
 		var list=this.state.cities;
 		var btnchange=this.btnchange;
+		var add = this.add
+		var deleteto = this.deletedata;
 		var List = this.state.cities.map(function(elem,index) {
 						return <Citylist sendnameStr={elem.nameStr} sendlist={list} state1={state} btnchangeto={btnchange} key={index}/>
-           })
-		var historyDom=this.state.startsearch.map(function(elem){
-						return <Historydom sethistory={elem} />
+          })
+		var historyDom=this.state.startsearch.map(function(elem,index){
+						return <Historydom sethistory={elem} sendDelete={deleteto} adds={add} key={index}/>
 		})
 		return(
 			<div>
@@ -74,7 +80,7 @@ class Search extends Component {
 						<span className="cityicon"></span>
 					</div>
 					<div className="rinput">
-						<input className="inputer" type="text" placeholder="搜索职位或公司" onChange={this.searchchange} onFocus={this.Startsearch}/>
+						<input className="inputer" type="text" placeholder="搜索职位或公司" onChange={this.searchchange} onFocus={this.Startsearch} value={this.state.searchname} />
 						<span className="search" onTouchEnd={this.seacrchbtn}><em className="searchicon"></em></span>
 									
 					</div>
@@ -82,7 +88,7 @@ class Search extends Component {
 				<div className={this.state.historyclass}>{historyDom}</div>
 				{/*职位列表和加载更多*/}
 				<div className={this.state.searchbtnclass} >
-					<Searchresult senddata={this.joblist}/>
+					{this.state.result}
 				</div>
 				{/*城市名字块*/}
 				<div className={this.state.ciy}>
@@ -102,36 +108,57 @@ class Search extends Component {
 			searchbtnclass:"out"
 		})
 	}
+//删除传输函数
+	deletedata(val){
+		this.setState({
+			startsearch:val
+		})
+	}
+//添加
+	add(val,out){
+		this.setState({
+			searchname:val,
+			historyclass:out
+		})
+	}
 //搜索东西函数
 	searchchange(e){
 		var intro =e.target.value;
 		var aryy=[]
 		this.setState({
-			searchname:intro
+			searchname:intro,
+			result:""
 		})
 	}
 //	搜索按钮函数
 	seacrchbtn(){
 		var This = this;
 		var cityName=this.state.titlehtml;
-		var historysearch=localStorage.historys;
-		var b = JSON.parse(historysearch)
 		var intro = this.state.searchname;
-		b.push(intro);
-		var a = JSON.stringify(b)
-		$.get("/search", {cityNames:cityName,intros:intro},function(){});
-		this.setState({
-			searchbtnclass:"fadin",
-			historyclass:"out"
-		})
-		localStorage.historys=a;
+		var sendTo={
+			toName:cityName,
+			totro:intro
+		}
+		var historysearch=localStorage.historys;
+		if(cityName&&intro){
+			var b = JSON.parse(historysearch)
+			b.push(intro);
+			var a = JSON.stringify(b);
+			this.setState({
+				searchbtnclass:"fadin",
+				historyclass:"out",
+				result:<Searchresult datas={sendTo}/>
+			})
+			localStorage.historys=a;	
+		}
 	}
 //	城市按钮点击开始
 	btnsearch(){
 		this.setState({
         		searchclass:"lbutton2",
         		searchbtnclass:"out",
-        		ciy:"ciy2"
+        		ciy:"ciy2",
+        		historyclass:"out"
         })
 	}
 	btnsearchEnd(){
@@ -151,13 +178,35 @@ class Search extends Component {
 	
 }
 class Historydom extends Component{
+	constructor(){
+		super();
+		this.deletechange =  this.deletechange.bind(this);
+		this.choose =  this.choose.bind(this);
+	}
 	render(){
 		return(
 			<ul className="historyouter">
-				<li className="history">{this.props.sethistory}</li>
-				<li className="deletebtn"></li>
+				<li className="history" onTouchStart={this.choose}>{this.props.sethistory}</li>
+				<li className="deletebtn" onClick={this.deletechange}></li>
 			</ul>
 		)
 	}
+	choose(e){
+		var value=e.target.innerHTML
+		this.props.adds(value,"out")
+	}
+	deletechange(e){
+	var value=e.target.previousSibling.innerHTML;
+	var a = [1,2,3]
+	var historydata=localStorage.historys;
+	    historydata = JSON.parse(historydata)
+    var index=historydata.indexOf(value);
+    	historydata.splice(index,1);
+    var data = JSON.stringify(historydata)
+    	localStorage.historys=data;
+   
+ 		this.props.sendDelete(historydata);
+	}
 }
+
 export default Search;

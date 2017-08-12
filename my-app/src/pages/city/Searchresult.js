@@ -26,13 +26,18 @@ class Searchresult extends Component{
 		}
 	}
 	componentWillMount(){
+		var name=this.props.datas.toName;
+		var intro=this.props.datas.totro;
 		var This = this;
-		$.get("/api", function(data){
-			 list = data.sendlist
-			 This.setState({
-			 	joblist:list
-			 })
-		});
+			var list ="";
+		if(name){
+			$.get("/search",{cityNames:name,intros:intro},function(data){
+				 list = data.sendlist
+				 This.setState({
+				 	joblist:list
+				 })
+			});
+		}
 	}
 	render(){
 		var list = this.state.joblist.map(function(elem,index) {

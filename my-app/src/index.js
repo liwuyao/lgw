@@ -9,6 +9,7 @@ import Search from './pages/Search';
 import User from './pages/User';
 import Register from './pages/Register';
 import Job from './pages/Job';
+import Details from './pages/Details';
 ReactDOM.render((
     <Router history={hashHistory}>
      <Route path="/" component={App}>
@@ -19,6 +20,7 @@ ReactDOM.render((
      </Route>
     <Route path="/login" component={Login}></Route>
     <Route path="/register" component={Register}></Route>
+    <Route path="/details" component={Details}></Route>
  	</Router>
  	)
 	, document.getElementById('root'));

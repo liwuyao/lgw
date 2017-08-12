@@ -7,7 +7,7 @@ class Jobitem extends React.Component{
    	  	 let {job} = this.props
    	  	 return (
 		         <li className="activeable list-item">
-		            <img src="http://www.lgstatic.com/i/image/M00/2C/02/CgpEMlkln3aATD2JAAARUPOW1rw744.png" className="item-logo" />
+		            <img src={"//www.lgstatic.com/"+job.companyLogo} className="item-logo" />
 		            <div className="item-desc">
 		                <h2 className="item-title">{job.companyFullName}</h2>
 		                <p className="item-info">
